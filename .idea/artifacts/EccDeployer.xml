@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="EccDeployer">
+    <output-path>$PROJECT_DIR$/out/artifacts/EccDeployer</output-path>
+    <root id="archive" name="EccDeployer.war" />
+  </artifact>
+</component>
