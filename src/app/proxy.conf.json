@@ -1,6 +1,6 @@
 {
-  "/policies/readAll": {
-    "target": "http://localhost:8080/springularInsuranceBackend",
+  "/eccdeployer": {
+    "target": "http://localhost:8080/eccdeployer",
     "secure": false
   }
 }
