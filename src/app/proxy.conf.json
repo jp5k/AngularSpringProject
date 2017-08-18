@@ -1,0 +1,6 @@
+{
+  "/policies/readAll": {
+    "target": "http://localhost:8080/springularInsuranceBackend",
+    "secure": false
+  }
+}
