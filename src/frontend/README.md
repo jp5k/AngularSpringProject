@@ -1,6 +1,15 @@
 # Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
+There are a few prerequisites:-
+You'll need npm (Node Package Manager) which will be installed with node. 
+To install node pickup a version from [node](https://nodejs.org/en/download/).
+I used the long term release, but you can probably use whichever version you like as its npm we're really after, so go ahead and install this now.
+
+Then use npm to install  [Angular CLI](https://github.com/angular/angular-cli). 
+From a command line type `npm install -g angular-cli`.
+This will globally install angular-cli which is used to do the admin, start the server etc for the frontend.
+
+When you first download the project you will need to run `npm install` to install the required node modules to run the project. 
 
 ## Development server
 
