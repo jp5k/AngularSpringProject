@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ViewController {
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String root() {
+
+    @RequestMapping(value = "/welcome")
+    public String exampleRoot() {
+        System.out.println("getting welcome");
         return "index";
     }
+
 }

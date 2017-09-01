@@ -10,17 +10,33 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
         <junit.version>3.8.1</junit.version>
         <maven.clean.version>3.0.0</maven.clean.version>
         <maven.compiler.version>3.6.2</maven.compiler.version>
         <maven.exec.version>1.6.0</maven.exec.version>
         <maven.war.version>3.1.0</maven.war.version>
+        <frontend.maven.version>1.5</frontend.maven.version>
+        <node.version>7.7.1</node.version>
+        <npm.version>4.2.0</npm.version>
+        <jackson.version>2.9.0</jackson.version>
         <!-- constants -->
         <frontend.path>src/frontend</frontend.path>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -60,6 +76,19 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -83,12 +112,41 @@
                         </filesets>
                     </configuration>
                 </plugin>
-                <!-- build frontend -->
+                <!-- copy angular resources -->
                 <!--
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>copy-angular2-dir</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.basedir}/target/angular</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>src/frontend</directory>
+                                        <includes>
+                                            <include>carrental/**/*.*</include>
+                                        </includes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                -->
+                <!-- build frontend -->
                 <plugin>
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
-                    <version>${frontend-maven-plugin.version}</version>
+                    <version>${frontend.maven.version}</version>
+                    <configuration>
+                        <workingDirectory>src/frontend</workingDirectory>
+                        <skip>true</skip>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>install node and npm</id>
@@ -123,7 +181,7 @@
                         </execution>
                     </executions>
                 </plugin>
-                -->
+
                 <!-- copy resources -->
                 <!-- compile -->
                 <plugin>
@@ -134,43 +192,12 @@
                         <target>1.8</target>
                     </configuration>
                 </plugin>
-                <!-- build the angular 2 app -->
-                <!--
+
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>${maven.exec.version}</version>
-                    <executions>
-                        <execution>
-                            <id>exec-npm-install</id>
-                            <phase>generate-sources</phase>
-                            <configuration>
-                                <workingDirectory>${project.basedir}/${frontend.path}</workingDirectory>
-                                <executable>cmd</executable>
-                                <arguments>
-                                    <argument>/C</argument>
-                                    <argument>npm</argument>
-                                    <argument>install</argument>
-                                </arguments>
-                            </configuration>
-                            <goals>
-                                <goal>exec</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>exec-npm-run-tsc</id>
-                            <phase>generate-sources</phase>
-                            <configuration>
-                                <workingDirectory>${project.basedir}/${frontend.path}</workingDirectory>
-                                <executable>compile</executable>
-                            </configuration>
-                            <goals>
-                                <goal>exec</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
                 </plugin>
-                -->
+
                 <!-- Create war file
                     this will create a target dir in the root of the project and build the war there
                 -->
@@ -179,16 +206,33 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${maven.war.version}</version>
                     <configuration>
+                        <warSourceDirectory>/webapp</warSourceDirectory>
                         <webXml>webapp/WEB-INF/web.xml</webXml>
                         <webResources>
                             <resource>
-                                <!-- this is relative to the pom.xml directory -->
                                 <directory>webapp/WEB-INF</directory>
                                 <filtering>true</filtering>
                                 <includes>
                                     <include>**/*</include>
                                 </includes>
                                 <targetPath>WEB-INF</targetPath>
+                            </resource>
+                            <resource>
+                                <directory>webapp/WEB-INF/views</directory>
+                                <filtering>true</filtering>
+                                <includes>
+                                    <include>**/*</include>
+                                </includes>
+                                <targetPath>WEB-INF</targetPath>
+                            </resource>
+
+                            <resource>
+                                <directory>${project.basedir}/src/frontend/dist</directory>
+                                <targetPath></targetPath>
+                                <includes>
+                                    <include>assets/**/*.*</include>
+                                    <include>*.*</include>
+                                </includes>
                             </resource>
                         </webResources>
                     </configuration>
