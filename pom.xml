@@ -145,7 +145,7 @@
                     <version>${frontend.maven.version}</version>
                     <configuration>
                         <workingDirectory>src/frontend</workingDirectory>
-                        <skip>true</skip>
+                        <skip>false</skip>
                     </configuration>
                     <executions>
                         <execution>
@@ -217,6 +217,7 @@
                                 </includes>
                                 <targetPath>WEB-INF</targetPath>
                             </resource>
+<!--
                             <resource>
                                 <directory>webapp/WEB-INF/views</directory>
                                 <filtering>true</filtering>
@@ -225,10 +226,12 @@
                                 </includes>
                                 <targetPath>WEB-INF</targetPath>
                             </resource>
-
+-->
                             <resource>
                                 <directory>${project.basedir}/src/frontend/dist</directory>
+<!--
                                 <targetPath></targetPath>
+-->
                                 <includes>
                                     <include>assets/**/*.*</include>
                                     <include>*.*</include>
