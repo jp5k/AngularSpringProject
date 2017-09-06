@@ -2,15 +2,13 @@ package com.ecclesiastical;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@RestController
 public class DeployRestController {
 
     @RequestMapping("/hello")
@@ -22,6 +20,7 @@ public class DeployRestController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public List<ExampleData> getBackendData() {
+        System.out.println("backend returning data");
         ExampleData data1 = new ExampleData();
         data1.setBackendItem1("Backend Item 1_1");
         data1.setBackendItem2("Backend Item 1_2");
@@ -31,7 +30,7 @@ public class DeployRestController {
         data2.setBackendItem2("Backend Item 2_2");
         data2.setBackendItem3("Backend Item 2_3");
 
-        List<ExampleData> data = new ArrayList<ExampleData>();
+        List<ExampleData> data = new ArrayList<>();
         data.add(data1);
         data.add(data2);
         return data;

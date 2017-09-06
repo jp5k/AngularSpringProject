@@ -13,7 +13,7 @@
 </table>
 <br>
 <table class="example_table">
-  <tr><td colspan="3">Example Data 2</td></tr>
+  <tr><td colspan="3">Example Data 2 - hard coded data from the service</td></tr>
   <tr>
     <th>Item 1</th>
     <th>Item 2</th>
@@ -24,16 +24,32 @@
     <td>{{example.service_item_2}}</td>
     <td>{{example.service_item_3}}</td>
   </tr>
-  <table class="example_table">
-    <tr><td colspan="3">Example Data Backend 1</td></tr>
+</table>
+<br>
+<table class="example_table">
+    <tr><td colspan="3">Example Data 3 - sample data from backend</td></tr>
     <tr>
       <th>Item 1</th>
       <th>Item 2</th>
       <th>Item 3</th>
     </tr>
-    <tr *ngFor="let example of example_data2; let i = index">
+    <tr *ngFor="let example of example_data3 | async; let i = index">
       <td>{{example.service_item_1}}</td>
       <td>{{example.service_item_2}}</td>
       <td>{{example.service_item_3}}</td>
     </tr>
+</table>
+<br>
+<table class="example_table">
+  <tr><td colspan="3">Example Data 4 - data from java webservice</td></tr>
+  <tr>
+    <th>Item 1</th>
+    <th>Item 2</th>
+    <th>Item 3</th>
+  </tr>
+  <tr *ngFor="let example of example_data4 | async; let i = index">
+    <td>{{example.service_item_1}}</td>
+    <td>{{example.service_item_2}}</td>
+    <td>{{example.service_item_3}}</td>
+  </tr>
 </table>

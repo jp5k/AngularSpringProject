@@ -112,32 +112,6 @@
                         </filesets>
                     </configuration>
                 </plugin>
-                <!-- copy angular resources -->
-                <!--
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>copy-angular2-dir</id>
-                            <phase>validate</phase>
-                            <goals>
-                                <goal>copy-resources</goal>
-                            </goals>
-                            <configuration>
-                                <outputDirectory>${project.basedir}/target/angular</outputDirectory>
-                                <resources>
-                                    <resource>
-                                        <directory>src/frontend</directory>
-                                        <includes>
-                                            <include>carrental/**/*.*</include>
-                                        </includes>
-                                    </resource>
-                                </resources>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-                -->
                 <!-- build frontend -->
                 <plugin>
                     <groupId>com.github.eirslett</groupId>
@@ -145,7 +119,7 @@
                     <version>${frontend.maven.version}</version>
                     <configuration>
                         <workingDirectory>src/frontend</workingDirectory>
-                        <skip>false</skip>
+                        <skip>true</skip>
                     </configuration>
                     <executions>
                         <execution>
@@ -217,26 +191,16 @@
                                 </includes>
                                 <targetPath>WEB-INF</targetPath>
                             </resource>
-<!--
-                            <resource>
-                                <directory>webapp/WEB-INF/views</directory>
-                                <filtering>true</filtering>
-                                <includes>
-                                    <include>**/*</include>
-                                </includes>
-                                <targetPath>WEB-INF</targetPath>
-                            </resource>
--->
+                            <!-- add this in when you need to build the war file -->
+                            <!--
                             <resource>
                                 <directory>${project.basedir}/src/frontend/dist</directory>
-<!--
-                                <targetPath></targetPath>
--->
                                 <includes>
                                     <include>assets/**/*.*</include>
                                     <include>*.*</include>
                                 </includes>
                             </resource>
+                            -->
                         </webResources>
                     </configuration>
                 </plugin>

@@ -3,19 +3,29 @@
  */
 
 export class ExampleData {
-
   private _service_item_1 : String;
 
   private _service_item_2 : String;
 
   private _service_item_3: String;
 
-  contstructor (item_1: String, item_2: String, item_3: String) {
+  constructor (item_1: String, item_2: String, item_3: String) {
     this._service_item_1 = item_1;
     this._service_item_2 = item_2;
     this._service_item_3 = item_3;
   }
 
+  set service_item_1(value: String) {
+    this._service_item_1 = value;
+  }
+
+  set service_item_2(value: String) {
+    this._service_item_2 = value;
+  }
+
+  set service_item_3(value: String) {
+    this._service_item_3 = value;
+  }
 
   get service_item_1(): String {
     return this._service_item_1;
