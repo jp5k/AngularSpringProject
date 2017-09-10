@@ -2,7 +2,7 @@
  * Created by stewartdunlop on 04/09/2017.
  */
 
-export class ExampleData {
+export class ExampleItem implements ExampleItem {
   private _service_item_1 : String;
 
   private _service_item_2 : String;
@@ -26,6 +26,7 @@ export class ExampleData {
   set service_item_3(value: String) {
     this._service_item_3 = value;
   }
+
 
   get service_item_1(): String {
     return this._service_item_1;

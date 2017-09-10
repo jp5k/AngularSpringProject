@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExampleService } from './example.service';
-import { ExampleData } from './example.model';
+import { ExampleItem } from './example.model';
 import {Observable} from "rxjs";
 
 @Component({
@@ -16,9 +16,9 @@ export class ExampleComponent {
   // example_data2 is obtained from the service
   example_data2:Object[];
   // example_data3 is obtained from the service which it has hard coded for dev
-  example_data3:Observable<ExampleData[]>;
+  example_data3:Observable<ExampleItem[]>;
   // example_data4 is obtained from the service which gets it from a webservice
-  example_data4:Observable<ExampleData[]>;
+  example_data4:Observable<ExampleItem[]>;
 
   constructor(exampleService: ExampleService) {
     this.exampleService = exampleService;
@@ -31,6 +31,8 @@ export class ExampleComponent {
   ngOnInit() {
     this.example_data2 = this.exampleService.getData();
     this.example_data3 = this.exampleService.getBackendData();
-    this.example_data4 = this.exampleService.getBackendData2();
+
+    this.example_data4 = this.exampleService.exampleItems; // subscribe to entire collection
+    this.exampleService.loadExampleData();    // load all exampleItems
   }
 }
