@@ -31,7 +31,6 @@ export class ExampleComponent {
   ngOnInit() {
     this.example_data2 = this.exampleService.getData();
     this.example_data3 = this.exampleService.getBackendData();
-
     this.example_data4 = this.exampleService.exampleItems; // subscribe to entire collection
     this.exampleService.loadExampleData();    // load all exampleItems
   }

@@ -29,19 +29,41 @@ export class ExampleService {
     this.exampleItems = this._exampleItems.asObservable();
   }
 
+  // This is real async data loading
   loadExampleData() {
     this.http.get(this.backendBaseUrl+'getBackendData')
-      .do((data:any) => {
+      .do((response:any) => {
         // this will log out the return
-        console.log("data: " +JSON.stringify(data));
+        console.log("response: " +JSON.stringify(response)+'\n');
       })
+      // map creates and array of objects
       .map(response => response.json())
-      .subscribe(data => {
-        this.dataStore.exampleItems = data;
+      .subscribe(response => {
+        this.dataStore.exampleItems = this.convertToExampleItems(response);
+        console.log('subscribe datastore is '+JSON.stringify(this.dataStore.exampleItems));
+        // Need to convert array of objects into an array of ExampleItem
+//        this._exampleItems.next(Object.assign({}, this.dataStore).exampleItems);
         this._exampleItems.next(Object.assign({}, this.dataStore).exampleItems);
-      }, error => console.log('Could not load todos.'));
+      }, error => console.log('Could not load data.'));
   }
 
+  convertToExampleItems(sourceData: Object[]) : ExampleItem[] {
+    console.log('Convert response data to the objects we want '+sourceData);
+    let returnData = [];
+    for(var sourceItem of sourceData) {
+      console.log('sourceItem is '+JSON.stringify(sourceItem));
+      let newExampleItem = new ExampleItem(sourceItem['backendItem1'],sourceItem['backendItem2'],sourceItem['backendItem3'] )
+      returnData.push(newExampleItem);
+    }
+    return returnData;
+  }
+
+  // Real data from the java rest service
+  getRealBackedData() : Observable<ExampleItem[]> {
+    return this._exampleItems.asObservable();
+  }
+
+  // Sample data in format of a array of objects
   getData() {
     return [
       {service_item_1:"service-data-1_1", service_item_2:"service_data-1_2", service_item_3:"service_data-1_3"},
@@ -51,33 +73,11 @@ export class ExampleService {
 
   // Hard coded data to use when developing
   getBackendData() : Observable<ExampleItem[]>{
-    let data1: ExampleItem = new ExampleItem('service-data-1_1','service-data-1_2','service-data-1_3');
-    let data2: ExampleItem = new ExampleItem('service-data-2_1','service-data-2_2','service-data-2_3');
+    let data1: ExampleItem = new ExampleItem('obs_service-data-1_1','obs_service-data-1_2','obs_service-data-1_3');
+    let data2: ExampleItem = new ExampleItem('obs_service-data-2_1','obs_service-data-2_2','obs_service-data-2_3');
     let returnData = [ data1, data2 ];
-    // For testing you can hard code a return
     return Observable.of(returnData);
   };
 
-  // Real data from the java rest service
-  getBackendData2() : Observable<ExampleItem[]> {
-    return this._exampleItems.asObservable();
-  }
-
-/*
-    return this.http.get(this.backendBaseUrl+'getBackendData')
-      .do((data:any) => {
-          // this will log out the return
-          console.log("data: " +JSON.stringify(data));
-      })
-      //.map((res:Response) => JSON.parse(res.json()))
-      .map(data => data._body)
-      .map(item => {
-          return new ExampleData(item.backendItem1, item.backendItem2, item.backendItem3);
-        })
-      .do((parsedData:any) => {
-        console.log("parsed data : "+JSON.stringify(parsedData))
-      })
-  }
-*/
 }
 
