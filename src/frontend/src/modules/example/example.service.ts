@@ -16,10 +16,12 @@ export class ExampleService {
   private backendBaseUrl = 'http://localhost:8080/example/';
 
   exampleItems: Observable<ExampleItem[]>;
-
   private _exampleItems: BehaviorSubject<ExampleItem[]>;
-
   private dataStore: { exampleItems: ExampleItem[] };
+
+  exampleDbaseItems: Observable<ExampleItem[]>;
+  private _exampleDbaseItems: BehaviorSubject<ExampleItem[]>;
+  private dataDbaseStore: { exampleDbaseItems: ExampleItem[] };
 
   constructor(http: Http) {
     this.http = http;
@@ -27,6 +29,10 @@ export class ExampleService {
     this.dataStore = { exampleItems: [] };
     this._exampleItems = <BehaviorSubject<ExampleItem[]>> new BehaviorSubject([]);
     this.exampleItems = this._exampleItems.asObservable();
+    // initialise dataStore
+    this.dataDbaseStore = { exampleDbaseItems: [] };
+    this._exampleDbaseItems = <BehaviorSubject<ExampleItem[]>> new BehaviorSubject([]);
+    this.exampleDbaseItems = this._exampleDbaseItems.asObservable();
   }
 
   // This is real async data loading
@@ -44,6 +50,22 @@ export class ExampleService {
         // Need to convert array of objects into an array of ExampleItem
 //        this._exampleItems.next(Object.assign({}, this.dataStore).exampleItems);
         this._exampleItems.next(Object.assign({}, this.dataStore).exampleItems);
+      }, error => console.log('Could not load data.'));
+  }
+
+  // This is real async data loading
+  loadDbaseData() {
+    this.http.get(this.backendBaseUrl+'getRealBackendData')
+      .do((response:any) => {
+        // this will log out the return
+        console.log("response: " +JSON.stringify(response)+'\n');
+      })
+      // map creates and array of objects
+      .map(response => response.json())
+      .subscribe(response => {
+        this.dataDbaseStore.exampleDbaseItems = this.convertToExampleItems(response);
+        // Need to convert array of objects into an array of ExampleItem
+        this._exampleDbaseItems.next(Object.assign({}, this.dataDbaseStore).exampleDbaseItems);
       }, error => console.log('Could not load data.'));
   }
 

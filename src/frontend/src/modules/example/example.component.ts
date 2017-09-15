@@ -19,6 +19,8 @@ export class ExampleComponent {
   example_data3:Observable<ExampleItem[]>;
   // example_data4 is obtained from the service which gets it from a webservice
   example_data4:Observable<ExampleItem[]>;
+  // example_data5 is obtained from the service which gets it from a webservice from the dbase
+  example_data5:Observable<ExampleItem[]>;
 
   constructor(exampleService: ExampleService) {
     this.exampleService = exampleService;
@@ -33,5 +35,7 @@ export class ExampleComponent {
     this.example_data3 = this.exampleService.getBackendData();
     this.example_data4 = this.exampleService.exampleItems; // subscribe to entire collection
     this.exampleService.loadExampleData();    // load all exampleItems
+    this.example_data5 = this.exampleService.exampleDbaseItems; // subscribe to entire collection
+    this.exampleService.loadDbaseData();    // load all exampleItems
   }
 }

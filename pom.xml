@@ -20,12 +20,28 @@
         <node.version>7.7.1</node.version>
         <npm.version>4.2.0</npm.version>
         <jackson.version>2.9.0</jackson.version>
+        <commons.version>1.2.2</commons.version>
         <!-- constants -->
         <frontend.path>src/frontend</frontend.path>
     </properties>
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -89,10 +105,23 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
         <sourceDirectory>src/server/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/server/main/resources</directory>
+            </resource>
+        </resources>
             <plugins>
                 <!-- clean -->
                 <plugin>
@@ -155,8 +184,6 @@
                         </execution>
                     </executions>
                 </plugin>
-
-                <!-- copy resources -->
                 <!-- compile -->
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>

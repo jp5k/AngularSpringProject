@@ -1,7 +1,8 @@
 package com.ecclesiastical;
 
+import com.ecclesiastical.com.ecclesiastical.example.ExampleData;
+import com.ecclesiastical.com.ecclesiastical.example.ExampleService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -34,6 +35,14 @@ public class DeployRestController {
         data.add(data1);
         data.add(data2);
         return data;
+    }
+
+    @RequestMapping(value="/getRealBackendData", method= RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public List<ExampleData> getRealBackendData() {
+        ExampleService svs = new ExampleService();
+        return svs.getAllData();
     }
 
 

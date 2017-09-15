@@ -1,12 +1,22 @@
-package com.ecclesiastical;
+package com.ecclesiastical.com.ecclesiastical.example;
 
 public class ExampleData {
+
+    private int idtable1;
 
     private String backendItem1;
 
     private String backendItem2;
 
     private String backendItem3;
+
+    public int getIdtable1() {
+        return idtable1;
+    }
+
+    public void setIdtable1(int idtable1) {
+        this.idtable1 = idtable1;
+    }
 
     public String getBackendItem1() {
         return backendItem1;
