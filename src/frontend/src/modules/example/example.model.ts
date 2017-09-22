@@ -1,7 +1,7 @@
 /**
  * Created by stewartdunlop on 04/09/2017.
  */
-import { ExampleData } from "./example.interface";
+import { ExampleData } from './example.interface';
 
 export class ExampleItem implements ExampleData {
   _service_item_1: String;

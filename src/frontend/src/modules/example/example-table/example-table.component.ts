@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExampleService } from '../example.service';
 import { ExampleItem } from '../example.model';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-example-table',
@@ -13,7 +13,7 @@ export class ExampleTableComponent implements OnInit {
   exampleService: ExampleService;
 
   // example_data1 is generated here in the component
-  example_data:Observable<ExampleItem[]>;
+  example_data: Observable<ExampleItem[]>;
 
   constructor(exampleService: ExampleService) {
     this.exampleService = exampleService;
