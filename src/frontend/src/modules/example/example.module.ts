@@ -1,19 +1,22 @@
 import { NgModule,  ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from "@angular/http";
 
 import { ExamplePipe } from './example.pipe';
 import { ExampleService } from './example.service';
-import { ExampleComponent } from './example.component';
-import {HttpModule} from "@angular/http";
+
+import { ExampleTableComponent } from "./example-table/example-table.component";
+import { ExampleSectionComponent} from "./example-section/example-section.component";
 
 @NgModule({
   imports: [CommonModule, HttpModule],
   declarations: [
     ExamplePipe,
-    ExampleComponent
+    ExampleSectionComponent,
+    ExampleTableComponent
   ],
   providers: [ExampleService],
-  exports: [ExampleComponent]
+  exports: [ExampleSectionComponent, ExampleTableComponent]
 })
 export class ExampleModule {
   static forRoot(): ModuleWithProviders {

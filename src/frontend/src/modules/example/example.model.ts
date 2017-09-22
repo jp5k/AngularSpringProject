@@ -1,13 +1,14 @@
 /**
  * Created by stewartdunlop on 04/09/2017.
  */
+import { ExampleData } from "./example.interface";
 
-export class ExampleItem implements ExampleItem {
-  private _service_item_1 : String;
+export class ExampleItem implements ExampleData {
+  _service_item_1: String;
 
-  private _service_item_2 : String;
+  _service_item_2: String;
 
-  private _service_item_3: String;
+  _service_item_3: String;
 
   constructor (item_1: String, item_2: String, item_3: String) {
     this._service_item_1 = item_1;

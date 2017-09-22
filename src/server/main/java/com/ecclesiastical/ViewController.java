@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ViewController {
 
-    @RequestMapping(value = "/welcome")
+    @RequestMapping(value = "/admin")
     public String exampleRoot() {
-        System.out.println("getting welcome");
-        return "index";
+        return "admin";
     }
 
 }

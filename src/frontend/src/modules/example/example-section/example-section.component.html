@@ -27,17 +27,17 @@
 </table>
 <br>
 <table class="example_table">
-    <tr><td colspan="3">Example Data 3 - Observable sample data from the service</td></tr>
-    <tr>
-      <th>Item 1</th>
-      <th>Item 2</th>
-      <th>Item 3</th>
-    </tr>
-    <tr *ngFor="let example of example_data3 | async; let i = index">
-      <td>{{example.service_item_1}}</td>
-      <td>{{example.service_item_2}}</td>
-      <td>{{example.service_item_3}}</td>
-    </tr>
+  <tr><td colspan="3">Example Data 3 - Observable sample data from the service</td></tr>
+  <tr>
+    <th>Item 1</th>
+    <th>Item 2</th>
+    <th>Item 3</th>
+  </tr>
+  <tr *ngFor="let example of example_data3 | async; let i = index">
+    <td>{{example.service_item_1}}</td>
+    <td>{{example.service_item_2}}</td>
+    <td>{{example.service_item_3}}</td>
+  </tr>
 </table>
 <br>
 <table class="example_table">
@@ -54,16 +54,4 @@
   </tr>
 </table>
 <br>
-<table class="example_table">
-  <tr><td colspan="3">Example Data 5 - dbase data from our webservice</td></tr>
-  <tr>
-    <th>Item 1</th>
-    <th>Item 2</th>
-    <th>Item 3</th>
-  </tr>
-  <tr *ngFor="let example of example_data5 | async; let i = index">
-    <td>{{example.service_item_1}}</td>
-    <td>{{example.service_item_2}}</td>
-    <td>{{example.service_item_3}}</td>
-  </tr>
-</table>
+<app-example-table>loading example table...</app-example-table>
