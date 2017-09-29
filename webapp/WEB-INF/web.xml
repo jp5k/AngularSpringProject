@@ -18,7 +18,11 @@
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/hello</url-pattern>
+        <!--
         <url-pattern>/getBackendData</url-pattern>
+        <url-pattern>/getRealBackendData</url-pattern>
+        <url-pattern>/getRealBackendData?tableId</url-pattern>
+        -->
         <url-pattern>/</url-pattern>
         <url-pattern>/index.jsp</url-pattern>
     </servlet-mapping>

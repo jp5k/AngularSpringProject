@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ExampleService } from '../example.service';
+import { ExampleSectionService } from './example-section.service';
 // This needs to be moved
-import { ExampleItem } from '../example.model';
+import { ExampleItem } from '../example-item.model';
 
 @Component({
   selector: 'app-example-section',
+  providers: [ ExampleSectionService ],
   templateUrl: './example-section.component.html',
   styleUrls: ['./example-section.component.css']
 })
 export class ExampleSectionComponent implements OnInit {
-  exampleService: ExampleService;
+  exampleService: ExampleSectionService;
 
   // example_data1 is generated here in the component
   example_data1: Object[];
@@ -22,7 +23,7 @@ export class ExampleSectionComponent implements OnInit {
   // example_data4 is obtained from the service which gets it from a webservice
   example_data4: Observable<ExampleItem[]>;
 
-  constructor(exampleService: ExampleService) {
+  constructor(exampleService: ExampleSectionService) {
     this.exampleService = exampleService;
   }
 
@@ -33,7 +34,8 @@ export class ExampleSectionComponent implements OnInit {
     ];
     this.example_data2 = this.exampleService.getData();
     this.example_data3 = this.exampleService.getBackendData();
+
     this.example_data4 = this.exampleService.exampleItems; // subscribe to entire collection
-    this.exampleService.loadExampleData();    // load all exampleItems
+    this.exampleService.loadExampleData();    // load all exampleItems that we subscribed to above
   }
 }

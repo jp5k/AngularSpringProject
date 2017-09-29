@@ -14,12 +14,17 @@ import java.util.List;
  */
 public class ExampleService {
 
-    public List<ExampleData> getAllData() {
+    public List<ExampleData> getAllData(String tableId) {
         List<ExampleData> data = new ArrayList<ExampleData>();
         try {
             Connection conn = ConnectionUtil.getConnection();
             Statement statement = conn.createStatement();
-            ResultSet rs = statement.executeQuery("select * from exampleTable limit 15");
+            // Maybe use criteria here instead of raw swl
+            StringBuffer sql = new StringBuffer("select * from exampleTable");
+            if (tableId != null) {
+                sql.append(" where tableId ='"+tableId+"'");
+            }
+            ResultSet rs = statement.executeQuery(sql.toString());
             while (rs.next()) {
                 ExampleData dataItem = new ExampleData();
                 dataItem.setIdtable1(rs.getInt("itemid"));

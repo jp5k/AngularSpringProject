@@ -1,4 +1,5 @@
-<table class="example_table">
+<div>
+<table class="table table-striped table-bordered table-condensed">
   <tr><td colspan="3">Example Data 1 - hard coded from the component</td></tr>
   <tr>
     <th>Item 1</th>
@@ -12,7 +13,7 @@
   </tr>
 </table>
 <br>
-<table class="example_table">
+<table class="table">
   <tr><td colspan="3">Example Data 2 - hard coded data from the service</td></tr>
   <tr>
     <th>Item 1</th>
@@ -26,7 +27,7 @@
   </tr>
 </table>
 <br>
-<table class="example_table">
+<table class="table">
   <tr><td colspan="3">Example Data 3 - Observable sample data from the service</td></tr>
   <tr>
     <th>Item 1</th>
@@ -34,24 +35,31 @@
     <th>Item 3</th>
   </tr>
   <tr *ngFor="let example of example_data3 | async; let i = index">
-    <td>{{example.service_item_1}}</td>
-    <td>{{example.service_item_2}}</td>
-    <td>{{example.service_item_3}}</td>
+    <td>{{example.getServiceItem1()}}</td>
+    <td>{{example.getServiceItem2()}}</td>
+    <td>{{example.getServiceItem3()}}</td>
   </tr>
 </table>
 <br>
 <table class="example_table">
-  <tr><td colspan="3">Example Data 4 - data from our webservice</td></tr>
+  <tr><td colspan="3">Example Data 4 - Observable sample data hard coded in webservice</td></tr>
   <tr>
     <th>Item 1</th>
     <th>Item 2</th>
     <th>Item 3</th>
   </tr>
   <tr *ngFor="let example of example_data4 | async; let i = index">
-    <td>{{example.service_item_1}}</td>
-    <td>{{example.service_item_2}}</td>
-    <td>{{example.service_item_3}}</td>
+    <td>{{example.getServiceItem1()}}</td>
+    <td>{{example.getServiceItem2()}}</td>
+    <td>{{example.getServiceItem3()}}</td>
   </tr>
 </table>
 <br>
-<app-example-table>loading example table...</app-example-table>
+<app-example-table
+  tableId="exTable1"
+  tableName="Passed in Table name - async dbase data from webservice - exTable1">loading example table...</app-example-table>
+<app-example-table
+  tableId="exTable2"
+  tableName="Passed in Table name - async dbase data from webservice- exTable2">loading example table...</app-example-table>
+</div>
+<div>right div</div>

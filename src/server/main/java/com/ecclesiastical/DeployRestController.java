@@ -21,7 +21,6 @@ public class DeployRestController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public List<ExampleData> getBackendData() {
-        System.out.println("backend returning data");
         ExampleData data1 = new ExampleData();
         data1.setBackendItem1("Backend Item 1_1");
         data1.setBackendItem2("Backend Item 1_2");
@@ -40,11 +39,10 @@ public class DeployRestController {
     @RequestMapping(value="/getRealBackendData", method= RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<ExampleData> getRealBackendData() {
+    public List<ExampleData> getRealBackendData(@RequestParam("tableId") String tableId) {
+        System.out.println("table id is "+tableId);
         ExampleService svs = new ExampleService();
-        return svs.getAllData();
+        return svs.getAllData(tableId);
     }
-
-
 
 }

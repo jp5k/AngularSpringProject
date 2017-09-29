@@ -16,28 +16,28 @@ export class ExampleItem implements ExampleData {
     this._service_item_3 = item_3;
   }
 
-  set service_item_1(value: String) {
+  public setServiceItem1(value: String) {
     this._service_item_1 = value;
   }
 
-  set service_item_2(value: String) {
+  public setServiceItem2(value: String) {
     this._service_item_2 = value;
   }
 
-  set service_item_3(value: String) {
+  public setServiceItem3(value: String) {
     this._service_item_3 = value;
   }
 
 
-  get service_item_1(): String {
+  public getServiceItem1(): String {
     return this._service_item_1;
   }
 
-  get service_item_2(): String {
+  public getServiceItem2(): String {
     return this._service_item_2;
   }
 
-  get service_item_3(): String {
+  public getServiceItem3(): String {
     return this._service_item_3;
   }
 }

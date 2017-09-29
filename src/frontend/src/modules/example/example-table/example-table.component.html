@@ -1,14 +1,14 @@
 <table class="example_table">
   <tr><td colspan="3">{{getTableName()}}</td></tr>
   <tr>
-    <th>Item 1</th>
-    <th>Item 2</th>
-    <th>Item 3</th>
+    <th>Col Head 1</th>
+    <th>Col Head 2</th>
+    <th>Col Head 3</th>
   </tr>
   <tr *ngFor="let example of example_data | async; let i = index">
-    <td>{{example.service_item_1}}</td>
-    <td>{{example.service_item_2}}</td>
-    <td>{{example.service_item_3}}</td>
+    <td>{{ example.getServiceItem1() }}</td>
+    <td>{{example.getServiceItem2()}}</td>
+    <td>{{example.getServiceItem3()}}</td>
   </tr>
 </table>
 <br>
