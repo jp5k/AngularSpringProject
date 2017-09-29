@@ -29,7 +29,7 @@ export class ExampleSectionService {
 
   // This is real async data loading - backed is hard coded in java layer - no dbase data
   loadExampleData() {
-    let backendUrl = this.backendBaseUrl + 'getBackendData';
+    const backendUrl = this.backendBaseUrl + 'getBackendData';
 
     this.http.get(backendUrl)
       .do((response: any) => {
@@ -49,10 +49,10 @@ export class ExampleSectionService {
 
   convertToExampleItems(sourceData: Object[]): ExampleItem[] {
     console.log('Convert response data to the objects we want ' + sourceData);
-    let returnData = [];
-    for (var sourceItem of sourceData) {
+    const returnData = [];
+    for (const sourceItem of sourceData) {
       console.log('sourceItem is ' + JSON.stringify(sourceItem));
-      let newExampleItem = new ExampleItem(sourceItem['backendItem1'], sourceItem['backendItem2'], sourceItem['backendItem3'] );
+      const newExampleItem = new ExampleItem(sourceItem['backendItem1'], sourceItem['backendItem2'], sourceItem['backendItem3'] );
       returnData.push(newExampleItem);
     }
     return returnData;
@@ -68,9 +68,9 @@ export class ExampleSectionService {
 
   // Hard coded data to use when developing - expand to use Observable pattern
   getBackendData(): Observable<ExampleItem[]> {
-    let data1: ExampleItem = new ExampleItem('obs_service-data-1_1', 'obs_service-data-1_2', 'obs_service-data-1_3');
-    let data2: ExampleItem = new ExampleItem('obs_service-data-2_1', 'obs_service-data-2_2', 'obs_service-data-2_3');
-    let returnData = [ data1, data2 ];
+    const data1: ExampleItem = new ExampleItem('obs_service-data-1_1', 'obs_service-data-1_2', 'obs_service-data-1_3');
+    const data2: ExampleItem = new ExampleItem('obs_service-data-2_1', 'obs_service-data-2_2', 'obs_service-data-2_3');
+    const returnData = [ data1, data2 ];
     return Observable.of(returnData);
   }
 

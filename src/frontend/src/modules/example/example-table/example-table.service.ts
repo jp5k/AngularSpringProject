@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http  } from '@angular/http';
-import { URLSearchParams } from "@angular/http";
+import { URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -30,7 +30,7 @@ export class ExampleTableService {
 
   // This is real async data loading
   loadDbaseData(tableId: string) {
-    let searchTableId = new URLSearchParams();
+    const searchTableId = new URLSearchParams();
     searchTableId.set('tableId', tableId);
     this.http.get(this.backendBaseUrl + 'getRealBackendData', {params: searchTableId})
       .do((response: any) => {
@@ -48,10 +48,10 @@ export class ExampleTableService {
 
   convertToExampleItems(sourceData: Object[]): ExampleItem[] {
     console.log('Convert response data to the objects we want ' + sourceData);
-    let returnData = [];
-    for (var sourceItem of sourceData) {
+    const returnData = [];
+    for (const sourceItem of sourceData) {
       console.log('sourceItem is ' + JSON.stringify(sourceItem));
-      let newExampleItem = new ExampleItem(sourceItem['backendItem1'], sourceItem['backendItem2'], sourceItem['backendItem3'] );
+      const newExampleItem = new ExampleItem(sourceItem['backendItem1'], sourceItem['backendItem2'], sourceItem['backendItem3'] );
       returnData.push(newExampleItem);
     }
     return returnData;

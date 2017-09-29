@@ -6,7 +6,7 @@ import { ExamplePipe } from './example.pipe';
 
 import { ExampleTableComponent } from './example-table/example-table.component';
 import { ExampleSectionComponent} from './example-section/example-section.component';
-import { ExampleInputComponent } from "./example-input/example-input.component";
+import { ExampleInputComponent } from './example-input/example-input.component';
 
 @NgModule({
   imports: [CommonModule, HttpModule],

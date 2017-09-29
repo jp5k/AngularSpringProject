@@ -1,0 +1,15 @@
+CREATE SCHEMA `mydb` ;
+
+CREATE TABLE `mydb`.`exampletable` (
+  `itemId` INT NOT NULL AUTO_INCREMENT,
+  `tableId` VARCHAR(45) NOT NULL,
+  `item1Value` VARCHAR(45) NULL,
+  `item2Value` VARCHAR(45) NULL,
+  `item3Value` VARCHAR(45) NULL,
+  PRIMARY KEY (`itemId`));
+
+INSERT INTO `mydb`.`exampletable` (`itemId`, `tableId`, `item1Value`, `item2Value`, `item3Value`) VALUES ('1', 'exTable1', 'exTable1_1_1', 'extTable1_1_2', 'exTable1_1_3');
+INSERT INTO `mydb`.`exampletable` (`itemId`, `tableId`, `item1Value`, `item2Value`, `item3Value`) VALUES ('2', 'exTable1', 'exTable1_2_1', 'exTable1_2_2', 'exTable1_2_3');
+INSERT INTO `mydb`.`exampletable` (`itemId`, `tableId`, `item1Value`, `item2Value`, `item3Value`) VALUES ('3', 'exTable2', 'exTable2_1_1', 'exTable2_1_2', 'exTable2_1_3');
+INSERT INTO `mydb`.`exampletable` (`itemId`, `tableId`, `item1Value`, `item2Value`, `item3Value`) VALUES ('4', 'exTable2', 'exTable2_2_1', 'exTable2_2_2', 'exTable2_2_3');
+  
