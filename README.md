@@ -8,7 +8,7 @@
 
 ### How do I get set up? ###
 
-* You'll need an IDE for both frontend and backend, Intellij or Spring Tool Suite are both suitable.
+* You'll need an IDE for both frontend and backend, Intellij or Spring Tool Suite(STS) are both suitable, however will involve a cost. Intellij Communit Edition does the java editing but not Typescript, the full edition does everything, but is £11.90 a month, or £120 a year. STS needs a TypesScript plugin, the Genuitec one isn't free either. Errol is testing the free one.
 * For frontend development you need to install node and angular-cli.
 * For backend development you'll need a backend database and the correct database drivers and connections strings. I've been using MySql and the jdbc.properties file has the settings for that. You'll also need a web container to deploy to, I've been using Tomcat and your IDE should help you deploy to that.
 
