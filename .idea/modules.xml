@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EccDeployer.iml" filepath="$PROJECT_DIR$/EccDeployer.iml" />
+      <module fileurl="file://$USER_HOME$/hhd_neo/src/server/HHD_Neo.iml" filepath="$USER_HOME$/hhd_neo/src/server/HHD_Neo.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/frontend/frontend.iml" filepath="$PROJECT_DIR$/src/frontend/frontend.iml" />
     </modules>
   </component>

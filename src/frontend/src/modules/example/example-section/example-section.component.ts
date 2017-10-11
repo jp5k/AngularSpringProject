@@ -23,8 +23,12 @@ export class ExampleSectionComponent implements OnInit {
   // example_data4 is obtained from the service which gets it from a webservice
   example_data4: Observable<ExampleItem[]>;
 
+  // For the select
+  _selectItems: Array<string>;
+
   constructor(exampleService: ExampleSectionService) {
     this.exampleService = exampleService;
+    this._selectItems = ['value1', 'value2', 'value3'];
   }
 
   ngOnInit() {
@@ -37,5 +41,10 @@ export class ExampleSectionComponent implements OnInit {
 
     this.example_data4 = this.exampleService.exampleItems; // subscribe to entire collection
     this.exampleService.loadExampleData();    // load all exampleItems that we subscribed to above
+
+  }
+
+  public getSelectItems(): Array<string> {
+    return this._selectItems;
   }
 }

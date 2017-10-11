@@ -1,9 +1,9 @@
-<table class="example_table">
+<table class="example_table table table-striped table-bordered">
   <tr><td colspan="3">{{getTableName()}}</td></tr>
   <tr>
-    <th>Col Head 1</th>
-    <th>Col Head 2</th>
-    <th>Col Head 3</th>
+    <th><label>Col Head 1</label></th>
+    <th><label>Col Head 2</label></th>
+    <th><label>Col Head 3</label></th>
   </tr>
   <tr *ngFor="let example of example_data | async; let i = index">
     <td>{{ example.getServiceItem1() }}</td>

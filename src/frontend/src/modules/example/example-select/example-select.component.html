@@ -1,0 +1,10 @@
+<div class="form-group">
+  <span class="col-md-4"><label>{{selectLabel}}</label></span>
+  <span class="col-md-6">
+    <select class="form-control">
+      <option value="">{{selectRequest}}</option>
+      <option *ngFor="let selectValue of selectItems; let i = index;"
+              [value] = "selectValue">{{selectValue}}</option>
+    </select>
+  </span>
+</div>

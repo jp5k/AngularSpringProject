@@ -1,0 +1,22 @@
+.hhd-page {
+  align: center;
+  margin: auto;
+  background-color: #eaeaea;
+  font-family: sans-serif;
+}
+
+.logo-box {
+  background-color: #F9F2EA;
+}
+
+.banner {
+}
+
+.page-details {
+  background-color: #ffffff;
+  font-size: larger;
+  color: #888888;
+  width:960px;
+  margin: auto;
+  padding: 20px;
+}

@@ -1,0 +1,34 @@
+<div class="outer-container">
+  <div>Please complete the form below in as much detail as you can.
+    You'll receive a quote withing 24 hours.
+    If you have any difficulty with this form please call on {{phoneNumber}}</div><br>
+  <div class="property-details-container">
+    <div class="item-container">
+      <div class="left-left-div">Property Details</div><div class="right-right-div">* Required Information</div>
+      <br>
+    </div>
+    <div class="item-container">
+      <div class="label-div">House number or name</div>
+      <div class="help"></div>
+      <div class="input-div">
+        <input name="ecc_housenumber"
+               [(ngModel)]="propertyDetailsModel.ecc_houseNumber"
+               class="input" type="text"
+               placeholder="Enter house number or name" required>
+      </div>
+    </div>
+    <div class="item-container">
+      <div class="label-div">Postcode*</div>
+      <div class="help"style="background-color: orange; color: #ffffff;">?</div>
+      <div class="input-div"><input
+        class="input" type="text"
+        [(ngModel)]="propertyDetailsModel.ecc_postCode"
+        placeholder="Enter postcode and click find address"/></div>
+      <div class="filler">&nbsp;</div>
+      <div class="button">Find Address</div>
+    </div>
+    <br>
+  </div>
+  <pre>house number is {{propertyDetailsModel.ecc_houseNumber}}</pre>
+  <pre>pstcode  is {{propertyDetailsModel.ecc_postCode}}</pre>
+</div>

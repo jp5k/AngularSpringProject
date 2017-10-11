@@ -35,3 +35,8 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Writing an Angular2 App ##
+
+The structure of the app seems follows the sections of the page. Each section will be responsible for a part of the functionality, eg login, address, etc.
+Initially I started writing very generic basic components that passed in a lot of data, but I realised that's not the angular way. There's no point writing a generic input component, there's already a generic input component, its the input tag. Write the NewUser component which is comprised of various input controls, validation and a submit that pulls together the functionality of getting a new user on to the system. 

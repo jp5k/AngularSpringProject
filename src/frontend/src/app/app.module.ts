@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { ExampleModule } from '../modules/example/example.module';
+import {HhdQuoteModule} from "../modules/hhd-quote/hhd-quote.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { ExampleModule } from '../modules/example/example.module';
   ],
   imports: [
     BrowserModule,
-    ExampleModule.forRoot()
+    ExampleModule.forRoot(),
+    HhdQuoteModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

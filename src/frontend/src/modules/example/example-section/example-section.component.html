@@ -1,65 +1,106 @@
-<div>
-<table class="table table-striped table-bordered table-condensed">
-  <tr><td colspan="3">Example Data 1 - hard coded from the component</td></tr>
-  <tr>
-    <th>Item 1</th>
-    <th>Item 2</th>
-    <th>Item 3</th>
-  </tr>
-  <tr *ngFor="let example of example_data1; let i = index">
-    <td>{{example['item1']}}</td>
-    <td>{{example['item2']}}</td>
-    <td>{{example['item3']}}</td>
-  </tr>
-</table>
-<br>
-<table class="table">
-  <tr><td colspan="3">Example Data 2 - hard coded data from the service</td></tr>
-  <tr>
-    <th>Item 1</th>
-    <th>Item 2</th>
-    <th>Item 3</th>
-  </tr>
-  <tr *ngFor="let example of example_data2; let i = index">
-    <td>{{example['service_item_1']}}</td>
-    <td>{{example['service_item_2']}}</td>
-    <td>{{example['service_item_3']}}</td>
-  </tr>
-</table>
-<br>
-<table class="table">
-  <tr><td colspan="3">Example Data 3 - Observable sample data from the service</td></tr>
-  <tr>
-    <th>Item 1</th>
-    <th>Item 2</th>
-    <th>Item 3</th>
-  </tr>
-  <tr *ngFor="let example of example_data3 | async; let i = index">
-    <td>{{example.getServiceItem1()}}</td>
-    <td>{{example.getServiceItem2()}}</td>
-    <td>{{example.getServiceItem3()}}</td>
-  </tr>
-</table>
-<br>
-<table class="example_table">
-  <tr><td colspan="3">Example Data 4 - Observable sample data hard coded in webservice</td></tr>
-  <tr>
-    <th>Item 1</th>
-    <th>Item 2</th>
-    <th>Item 3</th>
-  </tr>
-  <tr *ngFor="let example of example_data4 | async; let i = index">
-    <td>{{example.getServiceItem1()}}</td>
-    <td>{{example.getServiceItem2()}}</td>
-    <td>{{example.getServiceItem3()}}</td>
-  </tr>
-</table>
-<br>
-<app-example-table
-  tableId="exTable1"
-  tableName="Passed in Table name - async dbase data from webservice - exTable1">loading example table...</app-example-table>
-<app-example-table
-  tableId="exTable2"
-  tableName="Passed in Table name - async dbase data from webservice- exTable2">loading example table...</app-example-table>
-</div>
-<div>right div</div>
+<form #myForm="ngForm" novalidate>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row ">Form Example</div>
+        <!-- combine firstname and surname into a fieldset form group called name -->
+        <fieldset ngModelGroup="nameFormGroup">
+          <div><label>test</label><input type="text" name="testName" ngModel></div>
+          <div class="row">
+            <app-example-input
+              inputLabel="Enter First Name"
+              inputName="firstname"></app-example-input>
+          </div>
+          <div class="row">
+            <app-example-input
+              inputLabel="Enter Surname"
+              inputName="surname"></app-example-input>
+          </div>
+        </fieldset>
+        <pre>Name is {{myForm.value | json}}</pre>
+        <div class="row">
+          <app-example-input
+            inputLabel="Enter email"
+            inputName="email"></app-example-input>
+        </div>
+        <div class="row">
+          <app-example-select
+            selectLabel="Please select something from here"
+            [selectItems]=getSelectItems()
+            selectRequest="Please select a value">loading...</app-example-select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped table-bordered">
+          <tr><td colspan="3">Example Data 1 - hard coded from the component</td></tr>
+          <tr>
+            <th>Item 1</th>
+            <th>Item 2</th>
+            <th>Item 3</th>
+          </tr>
+          <tr *ngFor="let example of example_data1; let i = index">
+            <td>{{example['item1']}}</td>
+            <td>{{example['item2']}}</td>
+            <td>{{example['item3']}}</td>
+          </tr>
+        </table>
+        <br>
+        <table class="table table-striped table-bordered">
+          <tr><td colspan="3">Example Data 2 - hard coded data from the service</td></tr>
+          <tr>
+            <th>Item 1</th>
+            <th>Item 2</th>
+            <th>Item 3</th>
+          </tr>
+          <tr *ngFor="let example of example_data2; let i = index">
+            <td>{{example['service_item_1']}}</td>
+            <td>{{example['service_item_2']}}</td>
+            <td>{{example['service_item_3']}}</td>
+          </tr>
+        </table>
+        <br>
+        <table class="table table-striped table-bordered">
+          <tr><td colspan="3">Example Data 3 - Observable sample data from the service</td></tr>
+          <tr>
+            <th>Item 1</th>
+            <th>Item 2</th>
+            <th>Item 3</th>
+          </tr>
+          <tr *ngFor="let example of example_data3 | async; let i = index">
+            <td>{{example.getServiceItem1()}}</td>
+            <td>{{example.getServiceItem2()}}</td>
+            <td>{{example.getServiceItem3()}}</td>
+          </tr>
+        </table>
+        <br>
+        <table class="table table-striped table-bordered">
+          <tr><td colspan="3">Example Data 4 - Observable sample data hard coded in webservice</td></tr>
+          <tr>
+            <th>Item 1</th>
+            <th>Item 2</th>
+            <th>Item 3</th>
+          </tr>
+          <tr *ngFor="let example of example_data4 | async; let i = index">
+            <td>{{example.getServiceItem1()}}</td>
+            <td>{{example.getServiceItem2()}}</td>
+            <td>{{example.getServiceItem3()}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-md-6">
+        <app-example-table
+          tableId="exTable1"
+          tableName="Passed in Table name - async dbase data from webservice - exTable1">loading example table...</app-example-table>
+        <app-example-table
+          tableId="exTable2"
+          tableName="Passed in Table name - async dbase data from webservice- exTable2">loading example table...</app-example-table>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+
