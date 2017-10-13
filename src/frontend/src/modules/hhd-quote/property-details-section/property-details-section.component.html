@@ -1,34 +1,41 @@
-<div class="outer-container">
-  <div>Please complete the form below in as much detail as you can.
-    You'll receive a quote withing 24 hours.
-    If you have any difficulty with this form please call on {{phoneNumber}}</div><br>
-  <div class="property-details-container">
-    <div class="item-container">
-      <div class="left-left-div">Property Details</div><div class="right-right-div">* Required Information</div>
+<form [formGroup]="propertyDetailsFormGroup">
+  <div class="outer-container">
+    <div>Please complete the form below in as much detail as you can.
+      You'll receive a quote withing 24 hours.
+      If you have any difficulty with this form please call on {{phoneNumber}}</div><br>
+    <div class="property-details-container">
+      <div class="item-container">
+        <div class="left-left-div">Property Details</div><div class="right-right-div">* Required Information</div>
+        <br>
+      </div>
+      <div class="item-container">
+        <div class="label-div">House number or name</div>
+        <div class="help"></div>
+        <div class="input-div">
+          <input name="ecc_housenumber"
+                 formControlName="houseNumberFormCtrl"
+                 class="input" type="text"
+                 placeholder="Enter house number or name"/>
+        </div>
+      </div>
+      <div class="item-container">
+        <div class="label-div">Postcode*</div>
+        <div class="help"style="background-color: orange; color: #ffffff;">?</div>
+        <!-- regex validator ([Gg][Ii][Rr] 0[Aa]{2}|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2}|(([A-Za-z][0-9][A-Za-z])|[A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s[0-9][A-Za-z]{2}0 -->
+        <div class="input-div"><input
+          class="input" type="text"
+          formControlName="postcodeFormCtrl"
+          placeholder="Enter postcode and click find address"
+          value="{{propertyDetailsModel.ecc_postCode}}"
+          required/>
+        </div>
+        <div class="filler">&nbsp;</div>
+        <div class="button">Find Address</div>
+      </div>
       <br>
     </div>
-    <div class="item-container">
-      <div class="label-div">House number or name</div>
-      <div class="help"></div>
-      <div class="input-div">
-        <input name="ecc_housenumber"
-               [(ngModel)]="propertyDetailsModel.ecc_houseNumber"
-               class="input" type="text"
-               placeholder="Enter house number or name" required>
-      </div>
-    </div>
-    <div class="item-container">
-      <div class="label-div">Postcode*</div>
-      <div class="help"style="background-color: orange; color: #ffffff;">?</div>
-      <div class="input-div"><input
-        class="input" type="text"
-        [(ngModel)]="propertyDetailsModel.ecc_postCode"
-        placeholder="Enter postcode and click find address"/></div>
-      <div class="filler">&nbsp;</div>
-      <div class="button">Find Address</div>
-    </div>
-    <br>
+    <pre>house number is {{propertyDetailsModel.ecc_houseNumber}}</pre>
+    <pre>pstcode  is {{propertyDetailsModel.ecc_postCode}}</pre>
   </div>
-  <pre>house number is {{propertyDetailsModel.ecc_houseNumber}}</pre>
-  <pre>pstcode  is {{propertyDetailsModel.ecc_postCode}}</pre>
-</div>
+</form>
+

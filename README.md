@@ -44,9 +44,9 @@
 
 * Add unit tests for frontend, and E2E tests
 * Add gradle build script
-* Document how to get running in STS
+* Document how to get running in STS? Visual Studio? Intellij?
 * Get a global css - responsive
-    Angular responsive themes
+    Angular responsive themes?
 * Add users and security module for secure login
 * Add CRUD for example data
 * Create core components
@@ -54,3 +54,6 @@
     Drop down list from a dbase read that can be refreshed
     Input box with label, validation, help tip
     
+* Add validation with green tick and red cross
+* Extract less variables into a styling document
+* Provide example of switching styling

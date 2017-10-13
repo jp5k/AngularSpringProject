@@ -1,12 +1,28 @@
+@outer-container-background: white;
+@outer-container-font-color: black;
+
+@container-background: #eeeeee;
+
+@item-container-background: #eeeeee;
+@item-container-font-color: black;
+@item-container-border-color: #bbbbbb;
+
+@button-background: orange;
+@button-font: white;
+@base-font-color: #888888;
+
+@input-font-style: italic;
+
+
 .outer-container {
-  background-color: white;
+  background-color: @outer-container-background;
   text-align: left;
   padding: 25px;
-  color: #000000;
+  color: @outer-container-font-color;
 }
 
 .property-details-container {
-  background-color: #eeeeee;
+  background-color: @container-background;
   padding-top: 20px;
   text-align: left;
   margin: auto;
@@ -15,13 +31,13 @@
 
 .item-container {
   display: flex;
-  color: #000000;
-  background-color: #eeeeee;
+  color: @item-container-font-color;
+  background-color: @item-container-background;
   padding-top: 5px;
   margin-left: 20px;
   margin-right: 20px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #bbbbbb;
+  border-bottom: 1px solid @item-container-border-color;
 }
 
 .label-div {
@@ -48,9 +64,9 @@
 
 .input {
   width: 100%;
-  color: #888888;
+  color: @base-font-color;
   font-size: 0.9em;
-  font-style: italic;
+  font-style: @input-font-style;
 }
 
 .filler {
@@ -60,11 +76,11 @@
 
 .button {
   float: left;
-  color: white;
+  color: @button-font;
   padding: 3px;
   padding-left:10px;
   padding-right:10px;
-  background-color: orange;
+  background-color: @button-background;
   text-align: center;
 }
 

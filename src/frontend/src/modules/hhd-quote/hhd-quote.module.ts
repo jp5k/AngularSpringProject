@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Form, FormsModule} from "@angular/forms";
+import { ReactiveFormsModule} from "@angular/forms";
 
 
 import { QuotePageComponent } from "./quote-page/quote-page.component";
@@ -8,7 +8,7 @@ import { PropertyDetailsSectionComponent } from "./property-details-section/prop
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule
+    CommonModule, ReactiveFormsModule
   ],
   declarations: [ QuotePageComponent, PropertyDetailsSectionComponent ],
   providers: [],
