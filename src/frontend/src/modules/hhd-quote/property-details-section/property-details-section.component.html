@@ -21,21 +21,33 @@
       <div class="item-container">
         <div class="label-div">Postcode*</div>
         <div class="help"style="background-color: orange; color: #ffffff;">?</div>
-        <!-- regex validator ([Gg][Ii][Rr] 0[Aa]{2}|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2}|(([A-Za-z][0-9][A-Za-z])|[A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s[0-9][A-Za-z]{2}0 -->
         <div class="input-div"><input
           class="input" type="text"
           formControlName="postcodeFormCtrl"
           placeholder="Enter postcode and click find address"
-          value="{{propertyDetailsModel.ecc_postCode}}"
-          required/>
+          value="{{propertyDetailsModel.ecc_postCode}}"/>
         </div>
         <div class="filler">&nbsp;</div>
-        <div class="button">Find Address</div>
+        <div class="button"
+             (click)="findAddresses()"
+             [style.opacity]="postcodeFormCtrl.invalid==true ? 0.5 : 1 ">
+          Find Address</div>
+      </div>
+      <div *ngIf="addressesFound.length>0" class="item-container">
+        <div class="label-div">Select house</div>
+        <div class="help"></div>
+        <div class="input-div">
+          <select class="form-control">
+            <option value="">{{selectRequest}}</option>
+            <option *ngFor="let selectValue of addressesFound; let i = index;"
+                    [value] = "addressSelected">{{selectValue}}</option>
+          </select>
+        </div>
       </div>
       <br>
     </div>
-    <pre>house number is {{propertyDetailsModel.ecc_houseNumber}}</pre>
-    <pre>pstcode  is {{propertyDetailsModel.ecc_postCode}}</pre>
+    <pre>postcode is {{propertyDetailsModel.ecc_postCode}}</pre>
+    <pre>pstcode is valid {{!postcodeFormCtrl.invalid}}</pre>
   </div>
 </form>
 
